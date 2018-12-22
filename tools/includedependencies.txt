@@ -1,0 +1,308 @@
+$(OBJECT_DIR)/main.o :                   $(SOURCE_DIR)/main.cpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                             $(INCLUDE_DIR)/server.hpp \
+                                                 $(INCLUDE_DIR)/acceptorconnector.hpp \
+                                                     $(INCLUDE_DIR)/observer.hpp \
+                                                     $(INCLUDE_DIR)/tcpconnection.hpp \
+                                                         $(INCLUDE_DIR)/userinterface.hpp \
+                                                         $(INCLUDE_DIR)/timerevent.hpp \
+                                                             $(INCLUDE_DIR)/reactor.hpp \
+                                                                 $(INCLUDE_DIR)/singleton.hpp \
+                                                         $(INCLUDE_DIR)/ehzmeasureddata.hpp \
+                                             $(INCLUDE_DIR)/ehz.hpp \
+                                                 $(INCLUDE_DIR)/parser.hpp \
+                                                     $(INCLUDE_DIR)/scanner.hpp \
+                                                         $(INCLUDE_DIR)/escanalysis.hpp \
+                                                             $(INCLUDE_DIR)/crc16.hpp \
+                                                         $(INCLUDE_DIR)/token.hpp \
+                                                     $(INCLUDE_DIR)/factory.hpp \
+                                                     $(INCLUDE_DIR)/visitor.hpp \
+                                                 $(INCLUDE_DIR)/serial.hpp \
+                                                 $(INCLUDE_DIR)/database.hpp \
+                                                 $(INCLUDE_DIR)/parsetreevisitor.hpp \
+                                                     $(INCLUDE_DIR)/ehzconfig.hpp \
+                                             $(INCLUDE_DIR)/servertcpfactory.hpp \
+                                             $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/parsetreevisitor.o :       $(SOURCE_DIR)/parsetreevisitor.cpp \
+                                             $(INCLUDE_DIR)/parsetreevisitor.hpp \
+                                                 $(INCLUDE_DIR)/ehzconfig.hpp \
+                                                     $(INCLUDE_DIR)/mytypes.hpp \
+                                                 $(INCLUDE_DIR)/ehzmeasureddata.hpp \
+                                                 $(INCLUDE_DIR)/parser.hpp \
+                                                     $(INCLUDE_DIR)/scanner.hpp \
+                                                         $(INCLUDE_DIR)/escanalysis.hpp \
+                                                             $(INCLUDE_DIR)/crc16.hpp \
+                                                             $(INCLUDE_DIR)/singleton.hpp \
+                                                         $(INCLUDE_DIR)/token.hpp \
+                                                     $(INCLUDE_DIR)/factory.hpp \
+                                                     $(INCLUDE_DIR)/visitor.hpp \
+                                             $(INCLUDE_DIR)/bytestring.hpp \
+                                             $(INCLUDE_DIR)/obisunit.hpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                             $(INCLUDE_DIR)/crc16.hpp \
+                                 $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/database.o :               $(SOURCE_DIR)/database.cpp \
+                                             $(INCLUDE_DIR)/database.hpp \
+                                                 $(INCLUDE_DIR)/ehzmeasureddata.hpp \
+                                                     $(INCLUDE_DIR)/mytypes.hpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                             $(INCLUDE_DIR)/ehzconfig.hpp \
+                                         $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/ehz.o :                    $(SOURCE_DIR)/ehz.cpp \
+                                             $(INCLUDE_DIR)/ehz.hpp \
+                                                 $(INCLUDE_DIR)/parser.hpp \
+                                                     $(INCLUDE_DIR)/mytypes.hpp \
+                                                     $(INCLUDE_DIR)/scanner.hpp \
+                                                         $(INCLUDE_DIR)/escanalysis.hpp \
+                                                             $(INCLUDE_DIR)/crc16.hpp \
+                                                             $(INCLUDE_DIR)/singleton.hpp \
+                                                         $(INCLUDE_DIR)/token.hpp \
+                                                     $(INCLUDE_DIR)/factory.hpp \
+                                                     $(INCLUDE_DIR)/visitor.hpp \
+                                                 $(INCLUDE_DIR)/serial.hpp \
+                                                     $(INCLUDE_DIR)/eventhandler.hpp \
+                                                     $(INCLUDE_DIR)/observer.hpp \
+                                                 $(INCLUDE_DIR)/timerevent.hpp \
+                                                     $(INCLUDE_DIR)/reactor.hpp \
+                                                 $(INCLUDE_DIR)/database.hpp \
+                                                     $(INCLUDE_DIR)/ehzmeasureddata.hpp \
+                                                 $(INCLUDE_DIR)/parsetreevisitor.hpp \
+                                                     $(INCLUDE_DIR)/ehzconfig.hpp \
+                                             $(INCLUDE_DIR)/reactor.hpp \
+                                             $(INCLUDE_DIR)/bytestring.hpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                              $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/acceptorconnector.o :      $(SOURCE_DIR)/acceptorconnector.cpp \
+                                             $(INCLUDE_DIR)/acceptorconnector.hpp \
+                                                 $(INCLUDE_DIR)/observer.hpp \
+                                                     $(INCLUDE_DIR)/mytypes.hpp \
+                                                 $(INCLUDE_DIR)/tcpconnection.hpp \
+                                                     $(INCLUDE_DIR)/userinterface.hpp \
+                                                         $(INCLUDE_DIR)/eventhandler.hpp \
+                                                     $(INCLUDE_DIR)/timerevent.hpp \
+                                                         $(INCLUDE_DIR)/reactor.hpp \
+                                                             $(INCLUDE_DIR)/singleton.hpp \
+                                                     $(INCLUDE_DIR)/ehzmeasureddata.hpp \
+                                $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/tcpconnection.o :          $(SOURCE_DIR)/tcpconnection.cpp \
+                                             $(INCLUDE_DIR)/tcpconnection.hpp \
+                                                 $(INCLUDE_DIR)/userinterface.hpp \
+                                                     $(INCLUDE_DIR)/mytypes.hpp \
+                                                     $(INCLUDE_DIR)/eventhandler.hpp \
+                                                 $(INCLUDE_DIR)/observer.hpp \
+                                                 $(INCLUDE_DIR)/timerevent.hpp \
+                                                     $(INCLUDE_DIR)/reactor.hpp \
+                                                         $(INCLUDE_DIR)/singleton.hpp \
+                                                 $(INCLUDE_DIR)/ehzmeasureddata.hpp \
+                                             $(INCLUDE_DIR)/ehz.hpp \
+                                                 $(INCLUDE_DIR)/parser.hpp \
+                                                     $(INCLUDE_DIR)/scanner.hpp \
+                                                         $(INCLUDE_DIR)/escanalysis.hpp \
+                                                             $(INCLUDE_DIR)/crc16.hpp \
+                                                         $(INCLUDE_DIR)/token.hpp \
+                                                     $(INCLUDE_DIR)/factory.hpp \
+                                                     $(INCLUDE_DIR)/visitor.hpp \
+                                                 $(INCLUDE_DIR)/serial.hpp \
+                                                 $(INCLUDE_DIR)/database.hpp \
+                                                 $(INCLUDE_DIR)/parsetreevisitor.hpp \
+                                                     $(INCLUDE_DIR)/ehzconfig.hpp \
+                                             $(INCLUDE_DIR)/reactor.hpp \
+                                             $(INCLUDE_DIR)/transfer.hpp \
+                                                 $(INCLUDE_DIR)/proactor.hpp \
+                                             $(INCLUDE_DIR)/timerevent.hpp \
+                                    $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/ehzmeasureddata.o :        $(SOURCE_DIR)/ehzmeasureddata.cpp \
+                                             $(INCLUDE_DIR)/ehzmeasureddata.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                             $(INCLUDE_DIR)/bytestring.hpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                  $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/crc16.o :                  $(SOURCE_DIR)/crc16.cpp \
+                                             $(INCLUDE_DIR)/crc16.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                            $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/parser.o :                 $(SOURCE_DIR)/parser.cpp \
+                                             $(INCLUDE_DIR)/parser.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                                 $(INCLUDE_DIR)/scanner.hpp \
+                                                     $(INCLUDE_DIR)/escanalysis.hpp \
+                                                         $(INCLUDE_DIR)/crc16.hpp \
+                                                         $(INCLUDE_DIR)/singleton.hpp \
+                                                     $(INCLUDE_DIR)/token.hpp \
+                                                 $(INCLUDE_DIR)/factory.hpp \
+                                                 $(INCLUDE_DIR)/visitor.hpp \
+                                             $(INCLUDE_DIR)/parser2.hpp \
+                                             $(INCLUDE_DIR)/bytestring.hpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                           $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/scanner.o :                $(SOURCE_DIR)/scanner.cpp \
+                                             $(INCLUDE_DIR)/scanner.hpp \
+                                                 $(INCLUDE_DIR)/escanalysis.hpp \
+                                                     $(INCLUDE_DIR)/crc16.hpp \
+                                                         $(INCLUDE_DIR)/mytypes.hpp \
+                                                     $(INCLUDE_DIR)/singleton.hpp \
+                                                 $(INCLUDE_DIR)/token.hpp \
+                                          $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/eventhandler.o :           $(SOURCE_DIR)/eventhandler.cpp \
+                                             $(INCLUDE_DIR)/eventhandler.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                             $(INCLUDE_DIR)/reactor.hpp \
+                                                 $(INCLUDE_DIR)/singleton.hpp \
+                                     $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/server.o :                 $(SOURCE_DIR)/server.cpp \
+                                             $(INCLUDE_DIR)/server.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                                 $(INCLUDE_DIR)/acceptorconnector.hpp \
+                                                     $(INCLUDE_DIR)/observer.hpp \
+                                                     $(INCLUDE_DIR)/tcpconnection.hpp \
+                                                         $(INCLUDE_DIR)/userinterface.hpp \
+                                                             $(INCLUDE_DIR)/eventhandler.hpp \
+                                                         $(INCLUDE_DIR)/timerevent.hpp \
+                                                             $(INCLUDE_DIR)/reactor.hpp \
+                                                                 $(INCLUDE_DIR)/singleton.hpp \
+                                                         $(INCLUDE_DIR)/ehzmeasureddata.hpp \
+                                             $(INCLUDE_DIR)/servertcpfactory.hpp \
+                                                 $(INCLUDE_DIR)/factory.hpp \
+                                           $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/transfer.o :               $(SOURCE_DIR)/transfer.cpp \
+                                             $(INCLUDE_DIR)/transfer.hpp \
+                                                 $(INCLUDE_DIR)/proactor.hpp \
+                                                     $(INCLUDE_DIR)/mytypes.hpp \
+                                                     $(INCLUDE_DIR)/eventhandler.hpp \
+                                                     $(INCLUDE_DIR)/singleton.hpp \
+                                         $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/bytestring.o :             $(SOURCE_DIR)/bytestring.cpp \
+                                             $(INCLUDE_DIR)/bytestring.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                             $(INCLUDE_DIR)/mytypes.hpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                       $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/reactor.o :                $(SOURCE_DIR)/reactor.cpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                             $(INCLUDE_DIR)/reactor.hpp \
+                                                 $(INCLUDE_DIR)/singleton.hpp \
+                                          $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/proactor.o :               $(SOURCE_DIR)/proactor.cpp \
+                                             $(INCLUDE_DIR)/proactor.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                                 $(INCLUDE_DIR)/singleton.hpp \
+                                             $(INCLUDE_DIR)/reactor.hpp \
+                                         $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/escanalysis.o :            $(SOURCE_DIR)/escanalysis.cpp \
+                                             $(INCLUDE_DIR)/escanalysis.hpp \
+                                                 $(INCLUDE_DIR)/crc16.hpp \
+                                                     $(INCLUDE_DIR)/mytypes.hpp \
+                                                 $(INCLUDE_DIR)/singleton.hpp \
+                                      $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/userinterface.o :          $(SOURCE_DIR)/userinterface.cpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                             $(INCLUDE_DIR)/ehzconfig.hpp \
+                                    $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/serial.o :                 $(SOURCE_DIR)/serial.cpp \
+                                             $(INCLUDE_DIR)/userinterface.hpp \
+                                                 $(INCLUDE_DIR)/mytypes.hpp \
+                                                 $(INCLUDE_DIR)/eventhandler.hpp \
+                                             $(INCLUDE_DIR)/serial.hpp \
+                                                 $(INCLUDE_DIR)/observer.hpp \
+                                           $(MAIN_INCLUDES)
+	@echo Compiling $<
+	-@mkdir -p $(OBJECT_DIR)
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
+$(OBJECT_DIR)/typelengthfield.o :        $(SOURCE_DIR)/typelengthfield.cpp \
+                                             $(INCLUDE_DIR)/scanner.hpp \
+                                                 $(INCLUDE_DIR)/escanalysis.hpp \
+                                                     $(INCLUDE_DIR)/crc16.hpp \
+                                                         $(INCLUDE_DIR)/mytypes.hpp \
+                                                     $(INCLUDE_DIR)/singleton.hpp \
+                                                 $(INCLUDE_DIR)/token.hpp \
+                                  $(MAIN_INCLUDES)
+	@echo Compiling $<
+	@$(CC) $(COMPILER_FLAGS) $< -o$@
+
