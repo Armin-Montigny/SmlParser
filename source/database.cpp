@@ -145,7 +145,7 @@
 				// Now for each value for one of the EHZ in the EHZ system
 				for (uint noemd = null<uint>(); noemd< NumberOfEhzMeasuredData; ++noemd)
 				{
-					// at thebeginning of each loop iteration we set everything to empty
+					// at the beginning of each loop iteration we set everything to empty
 					EhzColumnNameAndType::MeasuredValueAndUnit measuredValueAndUnit;
 					measuredValueAndUnit.clear();
 					
@@ -200,7 +200,7 @@
 				cnat.clear();
 				// All time period flag fields will be of type boolean
 				cnat.columnType = &sqliteTypeNameBoolean[0];
-				// Fro all flag fields
+				// For all flag fields
 				for (uint period = null<uint>(); period < EhzLogPeriodCount; ++period)
 				{	
 					// Create name
@@ -212,15 +212,6 @@
 					ehzTimePeriodNameAndType.push_back(cnat);
 				}
 			}
-			
-			
-			{
-				//std::ostringstream tempBuf;
-				//tempBuf << "12345";
-				//ui.msgf("Length of 12345 = %d\n",tempBuf.tellp());
-			}
-
-			
 		}
 		
 		
@@ -390,7 +381,7 @@
 		void EhzDataBase::createSqlStrings(void)
 		{
 			// We will use SQLITE prepared statements with parameters
-			// SInce the columns of the database are deduced from the EHZ configuration
+			// Since the columns of the database are deduced from the EHZ configuration
 			// We do not know the count in advance. The columns are created dynamically.
 			sint parameterCount = null<sint>();
 			

@@ -145,8 +145,8 @@
 
 			TokenLength ehzDatabyteReadLoopCounter;			// Number of bytes to read for a type
 
-			TokenLength multiByteOctetLength;				// Length of Multi Byte Octet Data
-			TokenLength multiByteOctetNumberOfTlbyteRead;	// Number of TL bytes of a Multi byte Octet
+			TokenLength multiByteLength;				    // Length of Multi Byte Octet Data
+			TokenLength multiByteNumberOfTlbyteRead;	    // Number of TL bytes of a Multi byte Octet
 
 			s64 s64TempSignedInteger;						// Temp for building up s64 from bytes
 			u64 u64TempUnsignedInteger;						// Temp for building up u64 from bytes
@@ -160,8 +160,8 @@
             : escAnalysisResultCode(EscAnalysisResult::ESC_ANALYSIS_RESULT_ERROR),
               escAnalysis(),
               ehzDatabyteReadLoopCounter(0UL),
-              multiByteOctetLength(0UL),
-              multiByteOctetNumberOfTlbyteRead(0UL),
+              multiByteLength(0UL),
+              multiByteNumberOfTlbyteRead(0UL),
               s64TempSignedInteger(0LL),
               u64TempUnsignedInteger(0ULL),
               isFirstSignedIntegerByte(true),
@@ -314,6 +314,7 @@
 				static ScannerBaseState* handleTlByteSignedInteger(ScannerContextData &scd);
 				static ScannerBaseState* handleTlByteUnsignedInteger(ScannerContextData &scd);
 				static ScannerBaseState* handleTlByteMultiByteOctet(ScannerContextData &scd);
+				static ScannerBaseState* handleTlByteMultiByteList(ScannerContextData &scd);
 		};
 
 
@@ -356,6 +357,10 @@
 			// --------------------------------------------------------------------------------------------------------------------------
 			DEFINE_SCANNER_STANDARD_STATE(ScannerStateReadUnsignedInteger);
 
+			// --------------------------------------------------------------------------------------------------------------------------
+			// 3.2.8 Read all TL bytes for a Multi Byte List								State No: 8
+			// --------------------------------------------------------------------------------------------------------------------------
+			DEFINE_SCANNER_STANDARD_STATE(ScannerStateReadMultiByteList);
 
 
 

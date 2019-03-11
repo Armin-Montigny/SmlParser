@@ -61,7 +61,6 @@
 	namespace DatabaseInternal
 	{
 		// The name of the database. At the moment hardcoded.
-		//const char EhzDatabaseName[] = "/home/pidata/project/ehz/ehz.db";
 		const char EhzDatabaseName[] = ROOT_DIRECTORY "/ehz.db";
 		
 	// ------------------------------------------------------------------------------------------------------------------------------
@@ -88,12 +87,13 @@
 				void clear(void) { columnName.clear(); columnType.clear(); }
 		};
 
+		
 		// -----------------------------------------------------------------------------------------------------------
 		// 1.1.2 EHZ specific struct that can hold the name of the field/column/attribute and its type in SQLITE terms.
 		// We will store aquisition time and all measured values and units for a EHZ
 		struct EhzColumnNameAndType
 		{		
-			// Default consrtuctor. Set all values to defualt (empty, null)
+			// Default consrtuctor. Set all values to default (empty, null)
 			EhzColumnNameAndType(void);
 			// No specific destructor needed. The destructor of the struct members will be called
 			virtual ~EhzColumnNameAndType(void) {}

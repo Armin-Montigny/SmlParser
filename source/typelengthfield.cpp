@@ -115,11 +115,18 @@
 	// Read a multibyte Octet						
 	ScannerBaseState* TlByteAnalysis::handleTlByteMultiByteOctet(ScannerContextData &scd)
 	{
-		scd.multiByteOctetNumberOfTlbyteRead = 1UL;  // We have read one TL field of potential more
-		scd.multiByteOctetLength = scd.token.getLength();  // Set initial length
+		scd.multiByteNumberOfTlbyteRead = 1UL;  // We have read one TL field of potential more
+		scd.multiByteLength = scd.token.getLength();  // Set initial length
 		return getInstance<ScannerStateReadMultiByteOctet>(); // Goto next state. Read more TL bytes
 	}
 
+	// Read a multibyte Octet						
+	ScannerBaseState* TlByteAnalysis::handleTlByteMultiByteList(ScannerContextData &scd)
+	{
+		scd.multiByteNumberOfTlbyteRead = 1UL;  // We have read one TL field of potential more
+		scd.multiByteLength = scd.token.getLength();  // Set initial length
+		return getInstance<ScannerStateReadMultiByteList>(); // Goto next state. Read more TL bytes
+	}
 	
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 // 2. The lookup or "Jump"-Table
@@ -366,22 +373,22 @@
 		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xED
 		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xEE
 		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xEF
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xF0
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xF1
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xF2
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xF3
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xF4
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xF5
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xF6
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xF7
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xF8
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xF9
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xFA
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xFB
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xFC
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xFD
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset },      //0xFE
-		{ Token::CONDITION_ERROR, 0UL, &handleTlByteBasicReset }       //0xFF
+		{ Token::CONDITION_NOT_YET_DETECTED, 0UL, &handleTlByteMultiByteList },      //0xF0
+		{ Token::CONDITION_NOT_YET_DETECTED, 1UL, &handleTlByteMultiByteList },      //0xF1
+		{ Token::CONDITION_NOT_YET_DETECTED, 2UL, &handleTlByteMultiByteList },      //0xF2
+		{ Token::CONDITION_NOT_YET_DETECTED, 3UL, &handleTlByteMultiByteList },      //0xF3
+		{ Token::CONDITION_NOT_YET_DETECTED, 4UL, &handleTlByteMultiByteList },      //0xF4
+		{ Token::CONDITION_NOT_YET_DETECTED, 5UL, &handleTlByteMultiByteList },      //0xF5
+		{ Token::CONDITION_NOT_YET_DETECTED, 6UL, &handleTlByteMultiByteList },      //0xF6
+		{ Token::CONDITION_NOT_YET_DETECTED, 7UL, &handleTlByteMultiByteList },      //0xF7
+		{ Token::CONDITION_NOT_YET_DETECTED, 8UL, &handleTlByteMultiByteList },      //0xF8
+		{ Token::CONDITION_NOT_YET_DETECTED, 9UL, &handleTlByteMultiByteList },      //0xF9
+		{ Token::CONDITION_NOT_YET_DETECTED, 10UL, &handleTlByteMultiByteList },      //0xFA
+		{ Token::CONDITION_NOT_YET_DETECTED, 11UL, &handleTlByteMultiByteList },      //0xFB
+		{ Token::CONDITION_NOT_YET_DETECTED, 12UL, &handleTlByteMultiByteList },      //0xFC
+		{ Token::CONDITION_NOT_YET_DETECTED, 13UL, &handleTlByteMultiByteList },      //0xFD
+		{ Token::CONDITION_NOT_YET_DETECTED, 14UL, &handleTlByteMultiByteList },      //0xFE
+		{ Token::CONDITION_NOT_YET_DETECTED, 15UL, &handleTlByteMultiByteList }       //0xFF
 	};		
 
 

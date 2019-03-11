@@ -251,7 +251,7 @@
 			{
 				// TL fields are also contained in the length information.
 				// Therefore we must subtract the number of read TL bytes to obtain the net data length
-				scd.ehzDatabyteReadLoopCounter = scd.multiByteOctetLength - scd.multiByteOctetNumberOfTlbyteRead;
+				scd.ehzDatabyteReadLoopCounter = scd.multiByteLength - scd.multiByteNumberOfTlbyteRead;
 				// Set the length field in the token (without terminating 0)
 				scd.token.setTlLength(scd.ehzDatabyteReadLoopCounter);
 				// Goto next state
@@ -261,11 +261,11 @@
 			{
 				// We found a further TL byte with type SML_DATA_TYPE_MULTIBYTE_OCTET 
 				// Shift already calculated length by 4 bits to get room for another low nibble
-				scd.multiByteOctetLength <<= 4;
+				scd.multiByteLength <<= 4;
 				// Add low nibble of current TL field to get the new length
-				scd.multiByteOctetLength += (static_cast<TokenLength>(ehzDatabyte) & 0x0FLU);
+				scd.multiByteLength += (static_cast<TokenLength>(ehzDatabyte) & 0x0FLU);
 				// Remember the number of read Multibyte Octets (TL-Bytes)
-				++scd.multiByteOctetNumberOfTlbyteRead;
+				++scd.multiByteNumberOfTlbyteRead;
 			}
 			else
 			{
@@ -379,7 +379,61 @@
 
 		
 
-	
+		// --------------------------------------------------------------------------------------------------------------------------
+		// 1.7 Read all TL bytes for a Multi Byte List									State No: 8
+		// --------------------------------------------------------------------------------------------------------------------------
+
+		// Since the TL byte codes the length of the following data in the low nibble, only 4 bits
+		// are available for the length information. For longer lists this might not be sufficient
+		// Therefor SML defines a multi byte TL, where several TL bytes follow each other and
+		// the low nibbles are shifted and ored.
+		ScannerBaseState* ScannerStateReadMultiByteList::scan(const EhzDatabyte ehzDatabyte, ScannerContextData &scd)
+		{
+			// Set next default state to this. Meaning: Default is to stay in this state
+			ScannerBaseState *nextState = this;
+
+			// Set default analyze result to "CONDITION_NOT_YET_DETECTED". That means,
+			// we could not yet find a complete token and need to analyze more data
+			scd.token.setTlType(Token::CONDITION_NOT_YET_DETECTED);
+
+			// Check, if multibyte List is done. Then we read a normal List Type
+			// Tl field at the end of the TL field sequence
+			//lint -e921          921 Cast from Type to Type
+			if (0x70U == (0xF0U & static_cast<uint>(ehzDatabyte)))
+			{
+				// Shift already calculated length by 4 bits to get room for another low nibble
+				scd.multiByteLength <<= 4;
+				// Add low nibble of current TL field to get the new length
+				scd.multiByteLength += (static_cast<TokenLength>(ehzDatabyte) & 0x0FLU);
+
+				// Set the length field in the token 
+				scd.token.setTlLength(scd.multiByteLength);
+				
+				// All bytes analyzed. Set Token Type
+				scd.token.setTlType(Token::LIST);
+				// Goto next state
+				nextState = getInstance<ScannerStateAnalyzeTl>();  // Goto next State and read next TL
+			}
+			else if (0xF0U == (0xF0U & static_cast<uint>(ehzDatabyte)))   //  ? 0x80U
+			{
+				// We found a further TL byte with type SML_DATA_TYPE_MULTIBYTE_LIST 
+				// Shift already calculated length by 4 bits to get room for another low nibble
+				scd.multiByteLength <<= 4;
+				// Add low nibble of current TL field to get the new length
+				scd.multiByteLength += (static_cast<TokenLength>(ehzDatabyte) & 0x0FLU);
+				// Remember the number of read Multibyte Octets (TL-Bytes)
+				++scd.multiByteNumberOfTlbyteRead;
+			}
+			else
+			{
+				// At the moment we do only recognize Multi Byte Lists in this state
+				// No other data type with more than one TL byte shall be detected
+				scd.token.setTlType(Token::CONDITION_ERROR);  // Raise error
+				nextState = getInstance<ScannerStateIdle>();  // Go back to Idle state and wait for next telegram
+			}
+			return nextState;
+		}
+
 		
 		
 		

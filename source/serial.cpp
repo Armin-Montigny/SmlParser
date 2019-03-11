@@ -42,7 +42,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-
+#include <sys/ioctl.h>
 
 // ------------------------------------------------------------------------------------------------------------------------------
 // 1. Setting Serial Port Parameters
@@ -84,6 +84,16 @@ namespace SerialInternal
 			if (null<sint>() != tcsetattr(handle, TCSANOW, &serialOptions))
 			{
 				ok = false;
+			}
+			// Switch on DTR
+			sint DTR_flag = TIOCM_DTR;
+			if (-1 == ioctl(handle, TIOCMBIS, &DTR_flag))
+			{
+				ok = false;
+			}
+			else
+			{
+				ui << "Set DTR" << std::endl;
 			}
 		}
 	}
