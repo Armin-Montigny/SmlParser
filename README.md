@@ -8,11 +8,11 @@ The target platform is a Raspberry 3B+. The language is C++98. Static Code analy
 performed with PC Lint.
 
 The Architecture makes heavy use of all kind of design patterns. Including the non-mainstream patterns:
--Reactor, Proactor, Asynchronous Completion Token for handle based eventhandling
--Acceptor, Connector for network communication
--Interpreter, Composite, Visitor for parsing the raw SML data stream
--Obeserver (Publisher, Subscriber) for inter class communication
--and many more patterns known from the GOF
+- Reactor, Proactor, Asynchronous Completion Token for handle based eventhandling
+- Acceptor, Connector for network communication
+- Interpreter, Composite, Visitor for parsing the raw SML data stream
+- Obeserver (Publisher, Subscriber) for inter class communication
+- and many more patterns known from the GOF
 
 Additionally you can find a nano HTML server and full dynmic handling of SQLITE.
 
